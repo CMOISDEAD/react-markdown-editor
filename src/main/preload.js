@@ -1,4 +1,22 @@
+const electron = require('electron');
 const { contextBridge, ipcRenderer } = require('electron');
+const { shell } = require('electron');
+const remote = electron.remote;
+const { dialog } = remote;
+
+let openFileDialog = () => {
+  dialog
+    .ShowOpenDialog({
+      title: 'Open File',
+      message: 'First Dialog',
+      //pass 'openDirectory' to strictly open directories
+      properties: ['openFile'],
+    })
+    .then((result) => {
+      shell.openPath(result.filePaths[0]);
+      console.log(result.filePaths[0]);
+    });
+};
 
 contextBridge.exposeInMainWorld('electron', {
   ipcRenderer: {

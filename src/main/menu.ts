@@ -202,6 +202,14 @@ export default class MenuBuilder {
             accelerator: 'Ctrl+O',
           },
           {
+            label: '&Save',
+            accelerator: 'Ctrl+S',
+            click: () => {
+              // Do something.
+            },
+          },
+
+          {
             label: '&Close',
             accelerator: 'Ctrl+W',
             click: () => {
